@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Text Reader Mode",
+  "version": "1.0",
+  "description": "Turns the current page into a simple, readable text view (no ads, images, or clutter). Click the icon to toggle the view.",
+  "action": {
+    "default_title": "Toggle reader mode",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["scripting", "storage"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-reader": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+R",
+        "mac": "Command+Shift+R"
+      },
+      "description": "Toggle reader mode"
+    }
+  }
+}

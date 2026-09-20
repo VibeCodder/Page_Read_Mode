@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  :root { color-scheme: light dark; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 240px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #fbfaf7;
+    color: #2a2a28;
+  }
+  .wrap {
+    padding: 18px;
+    text-align: center;
+  }
+  .title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    font-size: 12px;
+    color: #8a8a86;
+    margin-bottom: 16px;
+  }
+  button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #2a2a28;
+    color: #fbfaf7;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { opacity: 0.9; }
+  button:active { opacity: 0.75; }
+  button.is-on {
+    background: #d8d5cc;
+    color: #2a2a28;
+  }
+  button svg { width: 18px; height: 18px; }
+  .error {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #b3453a;
+    display: none;
+  }
+  .hint {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #8a8a86;
+  }
+  kbd {
+    background: #eeece5;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-family: inherit;
+  }
+
+  .settings {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #eeece5;
+    text-align: left;
+  }
+  .switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+  }
+  .switch-row-label {
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .switch {
+    position: relative;
+    flex: 0 0 auto;
+    width: 36px;
+    height: 21px;
+  }
+  .switch input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .switch-slider {
+    position: absolute;
+    inset: 0;
+    background: #d8d5cc;
+    border-radius: 999px;
+    transition: background 0.15s ease;
+  }
+  .switch-slider::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 17px;
+    height: 17px;
+    background: #fbfaf7;
+    border-radius: 50%;
+    transition: transform 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
+  .switch input:checked + .switch-slider {
+    background: #2a2a28;
+  }
+  .switch input:checked + .switch-slider::before {
+    transform: translateX(15px);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html, body { background: #1b1b19; color: #e7e5dd; }
+    .subtitle, .hint { color: #8f8d85; }
+    button { background: #e7e5dd; color: #1b1b19; }
+    button.is-on { background: #3a3a36; color: #e7e5dd; }
+    kbd { background: #2a2a28; color: #e7e5dd; }
+    .error { color: #e08579; }
+    .settings { border-top-color: #2e2e2a; }
+    .switch-slider { background: #3a3a36; }
+    .switch-slider::before { background: #1b1b19; }
+    .switch input:checked + .switch-slider { background: #e7e5dd; }
+    .switch input:checked + .switch-slider::before { background: #1b1b19; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">Text Reader Mode</div>
+    <div class="subtitle">Strip clutter, keep the text</div>
+    <button id="toggleBtn">
+      <svg id="btnIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v8"/>
+        <path d="M6.3 6.3a9 9 0 1 0 11.4 0"/>
+      </svg>
+      <span id="btnLabel">Turn on</span>
+    </button>
+    <div class="error" id="errorMsg">Can't run on this page.</div>
+    <div class="hint">Shortcut: <kbd>Ctrl+Shift+R</kbd></div>
+
+    <div class="settings">
+      <label class="switch-row">
+        <span class="switch-row-label">Strip footnote number links<br>(e.g. [9] or bare linked numbers)</span>
+        <span class="switch">
+          <input type="checkbox" id="removeFootnotesToggle">
+          <span class="switch-slider"></span>
+        </span>
+      </label>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
