@@ -1,5 +1,5 @@
 # Page Read Mode
-
+An app made with Claude.<br>
 Does exactly what title describes.<br>
 Strips away unnecessary content from any page leaving only text to read.
 
