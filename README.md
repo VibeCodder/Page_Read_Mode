@@ -10,3 +10,6 @@ Strips away unnecessary content from any page leaving only text to read.
 
 
 <img width="302" height="303" alt="addon" src="https://github.com/user-attachments/assets/92604b65-9cb4-4d95-b191-59f96011842e" />
+
+
+<img width="1920" height="1020" alt="addon working" src="https://github.com/user-attachments/assets/dd97d855-68bf-4494-b120-082c3ee4e018" />
